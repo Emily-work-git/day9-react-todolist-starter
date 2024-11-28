@@ -11,7 +11,7 @@ export default function TodoGenerator() {
 
   const handleClick = () => {
     if (text.trim() === "") {
-        return;
+      return;
     }
     dispatch({ type: "ADD", payload: { text: text.trim() } });
   };
