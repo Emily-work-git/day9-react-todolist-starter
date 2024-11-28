@@ -16,10 +16,25 @@ export default function TodoGenerator() {
     dispatch({ type: "ADD", payload: { text: text.trim() } });
   };
 
+  const TodoGeneratorWrapperStyle = {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: "10px",
+    width: "100%",
+  }
+
+  const addButtonStyle = {
+    backgroundColor: "blue",
+    color: "white",
+    border: 0,
+    borderRadius: "5px",
+  }
+
   return (
-    <div>
+    <div style={TodoGeneratorWrapperStyle}>
       <input type="text" value={text} onChange={handleInputChange} />
-      <button onClick={handleClick}>add</button>
+      <button style={addButtonStyle} onClick={handleClick}>add</button>
     </div>
   );
 }
