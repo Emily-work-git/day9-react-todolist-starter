@@ -10,11 +10,25 @@ export default function TodoItem(props){
             payload: {id: props.item.id}})
     }
 
+    const handleDelete = () => {
+        dispatch({type: "DELETE", 
+            payload: {id: props.item.id}})
+    }
+
     return(
-        <div onClick={handleClick} style={{
-            textDecoration: props.item.done ? "line-through" : "none"
+        <div style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            width: "100%",
+            gap: "10px"
         }}>
-            {props.item.text}
+            <p onClick={handleClick} style={{
+                textDecoration: props.item.done ? "line-through" : "none",
+            }}>
+                {props.item.text}
+            </p>
+            <button onClick={handleDelete}>X</button>
         </div>
     )
 }
