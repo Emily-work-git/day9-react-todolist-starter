@@ -4,8 +4,6 @@ export default function TodoItem(props){
     const { dispatch } = React.useContext(TodoContext);
 
     const handleClick = () => {
-        console.log(props.item)
-        console.log("clicked")
         dispatch({type: "UPDATE_DONE", 
             payload: {id: props.item.id}})
     }
@@ -25,6 +23,10 @@ export default function TodoItem(props){
         }}>
             <p onClick={handleClick} style={{
                 textDecoration: props.item.done ? "line-through" : "none",
+                cursor: "pointer",
+                width: "200px",
+                wordWrap: "break-word",
+                border: "1px solid black",
             }}>
                 {props.item.text}
             </p>
