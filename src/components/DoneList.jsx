@@ -7,7 +7,7 @@ export default function DoneList(){
     const doneList = (state) => {
         console.log(state)
         return (state.filter(todo => todo.done).map((todo) => 
-         (<p key={todo.id}>{todo.text}</p>)))        
+         (<p key={todo.id}>{todo.text}</p>)))
     }
 
     return (<>
