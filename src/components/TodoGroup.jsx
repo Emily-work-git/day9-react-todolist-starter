@@ -8,13 +8,10 @@ export default function TodoGroup() {
   const { state } = useContext(TodoContext);
   const [currentPage, setCurrentPage] = React.useState(1);
   const pageSize = 3;
-  const maxPage = Math.ceil(state.length / pageSize);
-
 
   const handleChange = (page) => {
     console.log("clicked")
     setCurrentPage(page);
-
   };
 
   return (
