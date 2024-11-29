@@ -1,8 +1,10 @@
 import { useState, useContext } from "react";
 import { TodoContext } from "../App";
-import Button from "@mui/material/Button";
+import { Button } from "antd";
 import React from "react";
 import { addTodos } from "../api/todo";
+import { Input } from "antd";
+
 export default function TodoGenerator() {
   const [text, setText] = useState("");
   const { dispatch } = useContext(TodoContext);
@@ -37,11 +39,12 @@ export default function TodoGenerator() {
 
   return (
     <div style={TodoGeneratorWrapperStyle}>
-      <input
+      <Input
         type="text"
         maxLength={maxInputLength}
         value={text}
         onChange={handleInputChange}
+        size="small"
       />
       <Button variant="contained" size="small" onClick={handleClick}>
         add

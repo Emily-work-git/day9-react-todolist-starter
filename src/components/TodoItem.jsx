@@ -1,5 +1,6 @@
 import React from 'react';
 import { TodoContext } from '../App';
+import { CheckBox } from '@mui/icons-material';
 export default function TodoItem(props){
     const { dispatch } = React.useContext(TodoContext);
 
@@ -36,7 +37,7 @@ export default function TodoItem(props){
             <p onClick={handleClick} style={TodoItemTextStyle}>
                 {props.item.text}
             </p>
-            <button onClick={handleDelete}>X</button>
+            <CheckBox onClick={handleDelete}>X</CheckBox>
         </div>
     )
 }
