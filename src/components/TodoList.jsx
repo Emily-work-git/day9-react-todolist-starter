@@ -1,4 +1,5 @@
 
+import TodoGenerator from './TodoGenerator';
 import TodoGroup from './TodoGroup';
 
 export default function TodoList () {
@@ -6,6 +7,7 @@ export default function TodoList () {
       <div>
         <h1>This is the TodoList Component</h1>
         <TodoGroup/>
+        <TodoGenerator/>
       </div>
   );
 }
