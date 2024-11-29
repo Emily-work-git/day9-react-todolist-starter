@@ -1,18 +1,22 @@
 import React from 'react';
 import { TodoContext } from '../App';
 import { Button } from '@mui/material';
-import { deleteTodo } from '../api/todo';
+import { deleteTodo, updateTodo } from '../api/todo';
+import { Actions } from '../context/todoReducer';
+
 export default function TodoItem(props){
     const { dispatch } = React.useContext(TodoContext);
 
     const handleClick = () => {
-        dispatch({type: "UPDATE_DONE", 
-            payload: {id: props.item.id}})
+        updateTodo(props.item.id, {done: !props.item.done})
+        .then(() => {
+            dispatch({type: Actions.UPDATE_DONE, 
+                payload: {id: props.item.id}})
+        })
     }
 
     const handleDelete = () => {
         deleteTodo(props.item.id).then(() => {
-            console.log("Deleted");
             dispatch({type: "DELETE", 
                 payload: {id: props.item.id}})
         })

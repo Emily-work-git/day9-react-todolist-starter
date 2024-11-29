@@ -30,3 +30,12 @@ export const deleteTodo = async (id) => {
     }
 }
 
+export const updateTodo = async (id, data) => {
+    try{
+        const response = await instance.put(`/todo/${id}`,data);
+        return response.data;
+    }catch(error){
+        console.error(error);
+    }
+}
+
