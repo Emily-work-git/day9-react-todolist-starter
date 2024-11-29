@@ -1,11 +1,13 @@
 import { useState, useContext } from "react";
 import { TodoContext } from "../App";
 import Button from "@mui/material/Button";
-
+import React from "react";
+import { addTodos } from "../api/todo";
 export default function TodoGenerator() {
   const [text, setText] = useState("");
   const { dispatch } = useContext(TodoContext);
   const maxInputLength = 100;
+
 
   const handleInputChange = (event) => {
     if (event.target.value.length > maxInputLength) {
@@ -15,11 +17,13 @@ export default function TodoGenerator() {
     setText(event.target.value);
   };
 
-  const handleClick = () => {
+  const handleClick = async() => {
     if (text.trim() === "") {
       return;
     }
-    dispatch({ type: "ADD", payload: { text: text.trim() } });
+    const newTodo = { text: text.trim(), done: false };
+    const response = await addTodos(newTodo);
+    dispatch({ type: "ADD", payload: response });
     setText("");
   };
 
