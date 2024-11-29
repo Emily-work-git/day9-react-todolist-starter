@@ -1,7 +1,7 @@
 import { createContext, useReducer } from "react";
 import './App.css';
 import TodoList from "./components/TodoList";
-import { todoReducer } from "./context/todoReducer";
+import { InitialState, todoReducer } from "./context/todoReducer";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import NotFound from "./components/NotFound";
 import {Navigate} from "react-router-dom";
@@ -10,7 +10,7 @@ import DoneList from "./components/DoneList";
 export const TodoContext = createContext();
 
 function App() {
-  const [state, dispatch] = useReducer(todoReducer, []);
+  const [state, dispatch] = useReducer(todoReducer, InitialState);
 
   return (
     <div className="App">
