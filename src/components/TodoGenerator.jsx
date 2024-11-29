@@ -1,11 +1,17 @@
 import { useState, useContext } from "react";
 import { TodoContext } from "../App";
+import Button from "@mui/material/Button";
 
 export default function TodoGenerator() {
   const [text, setText] = useState("");
   const { dispatch } = useContext(TodoContext);
+  const maxInputLength = 100;
 
   const handleInputChange = (event) => {
+    if (event.target.value.length > maxInputLength) {
+      alert("The input has exceed the maximum length allowed");
+      return;
+    }
     setText(event.target.value);
   };
 
@@ -14,6 +20,7 @@ export default function TodoGenerator() {
       return;
     }
     dispatch({ type: "ADD", payload: { text: text.trim() } });
+    setText("");
   };
 
   const TodoGeneratorWrapperStyle = {
@@ -22,19 +29,19 @@ export default function TodoGenerator() {
     alignItems: "center",
     gap: "10px",
     width: "100%",
-  }
-
-  const addButtonStyle = {
-    backgroundColor: "blue",
-    color: "white",
-    border: 0,
-    borderRadius: "5px",
-  }
+  };
 
   return (
     <div style={TodoGeneratorWrapperStyle}>
-      <input type="text" value={text} onChange={handleInputChange} />
-      <button style={addButtonStyle} onClick={handleClick}>add</button>
+      <input
+        type="text"
+        maxLength={maxInputLength}
+        value={text}
+        onChange={handleInputChange}
+      />
+      <Button variant="contained" size="small" onClick={handleClick}>
+        add
+      </Button>
     </div>
   );
 }
