@@ -1,6 +1,7 @@
 import React from 'react';
 import { TodoContext } from '../App';
-import { CheckBox } from '@mui/icons-material';
+import { Button } from '@mui/material';
+import { deleteTodo } from '../api/todo';
 export default function TodoItem(props){
     const { dispatch } = React.useContext(TodoContext);
 
@@ -10,8 +11,11 @@ export default function TodoItem(props){
     }
 
     const handleDelete = () => {
-        dispatch({type: "DELETE", 
-            payload: {id: props.item.id}})
+        deleteTodo(props.item.id).then(() => {
+            console.log("Deleted");
+            dispatch({type: "DELETE", 
+                payload: {id: props.item.id}})
+        })
     }
 
     const TodoItemWrapperStyle = {
@@ -37,7 +41,7 @@ export default function TodoItem(props){
             <p onClick={handleClick} style={TodoItemTextStyle}>
                 {props.item.text}
             </p>
-            <CheckBox onClick={handleDelete}>X</CheckBox>
+            <Button onClick={handleDelete}> Delete Item </Button>
         </div>
     )
 }

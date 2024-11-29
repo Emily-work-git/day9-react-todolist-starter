@@ -22,4 +22,11 @@ export const addTodos = async (data) => {
     }
 }
 
+export const deleteTodo = async (id) => {
+    try{
+        await instance.delete(`/todo/${id}`);
+    }catch(error){
+        console.error(error);
+    }
+}
 
