@@ -33,18 +33,18 @@ export default function TodoGenerator() {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    gap: "10px",
-    width: "100%",
+    gap: "10px",    
+    width: "30vw"
   };
 
   return (
     <div style={TodoGeneratorWrapperStyle}>
       <Input
         type="text"
-        maxLength={maxInputLength}
         value={text}
         onChange={handleInputChange}
         size="small"
+        maxLength={maxInputLength}
       />
       <Button variant="contained" size="small" onClick={handleClick}>
         add

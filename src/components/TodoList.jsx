@@ -20,13 +20,19 @@ export default function TodoList() {
       });
   }, []);
 
+  const TodolistWrapperStyle = {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    gap: "10px",
+  };
   return isLoading ? (
     <Spin></Spin>
   ) : (
-    <div>
+    <div style={TodolistWrapperStyle}>
       <h1>This is the TodoList Component</h1>
-      <TodoGroup />
       <TodoGenerator />
+      <TodoGroup />
     </div>
   );
 }

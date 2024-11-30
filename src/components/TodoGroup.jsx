@@ -15,7 +15,7 @@ export default function TodoGroup() {
   };
 
   return (
-    <div style={{width: '70vw', display: 'flex', flexDirection: 'column'}}>
+    <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
       {state == null || state.length === 0 ? (
         <p>Add the things you need to do today</p>
       ) : (
@@ -27,7 +27,9 @@ export default function TodoGroup() {
             defaultCurrent={1}
             pageSize={pageSize}
             onChange={handleChange}
-            total={state.length}/>
+            total={state.length}
+            showSizeChanger={false}
+            />
         </>
       )}
 

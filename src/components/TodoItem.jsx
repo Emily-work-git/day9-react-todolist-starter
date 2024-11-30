@@ -36,7 +36,7 @@ export default function TodoItem(props){
     const TodoItemTextStyle = {
         textDecoration: props.item.done ? "line-through" : "none",
         cursor: "pointer",
-        width: "200px",
+        width: "30vw",
         wordWrap: "break-word",
         border: "1px solid black",
         margin: "0",
