@@ -3,6 +3,8 @@ import { TodoContext } from '../App';
 import { Button } from '@mui/material';
 import { deleteTodo, updateTodo } from '../api/todo';
 import { Actions } from '../context/todoReducer';
+import { DeleteOutlined } from '@ant-design/icons';
+import UpdateTodoModal from './UpdateTodoModal';
 
 export default function TodoItem(props){
     const { dispatch } = React.useContext(TodoContext);
@@ -45,7 +47,8 @@ export default function TodoItem(props){
             <p onClick={handleClick} style={TodoItemTextStyle}>
                 {props.item.text}
             </p>
-            <Button onClick={handleDelete}> Delete Item </Button>
+            <Button onClick={handleDelete} variant='outlined' size="small"> <DeleteOutlined /> </Button>
+            <UpdateTodoModal itemId={props.item.id}/>
         </div>
     )
 }
