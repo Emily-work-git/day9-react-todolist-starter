@@ -1,11 +1,12 @@
 import { createContext, useReducer } from "react";
-import './App.css';
+import "./App.css";
 import TodoList from "./components/TodoList";
 import { InitialState, todoReducer } from "./context/todoReducer";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import NotFound from "./components/NotFound";
-import {Navigate} from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import DoneList from "./components/DoneList";
+import Help from "./components/Help";
 
 export const TodoContext = createContext();
 
@@ -14,24 +15,22 @@ function App() {
 
   return (
     <div className="App">
-
       <TodoContext.Provider value={{ state, dispatch }}>
-      <Router>
-        <nav>
-          <Link to="/todo-list">Todo List </Link>
-          /
-          <Link to="/done-list">Done List </Link>
-        </nav>
+        <Router>
+          <nav>
+            <Link to="/todo-list">Todo List </Link>/
+            <Link to="/done-list">Done List </Link> / 
+            <Link to="/help">Help </Link>
+          </nav>
           <Routes>
-              <Route path="*" element={<NotFound/>} />
-              <Route path="/" element={<Navigate to="/todo-list"/>} />
-              <Route path="/done-list" element={<DoneList/>} />
-              <Route path="/todo-list" element={<TodoList />} />
+            <Route path="*" element={<NotFound />} />
+            <Route path="/" element={<Navigate to="/todo-list" />} />
+            <Route path="/help" element={<Help />} />
+            <Route path="/done-list" element={<DoneList />} />
+            <Route path="/todo-list" element={<TodoList />} />
           </Routes>
-      </Router>  
-
+        </Router>
       </TodoContext.Provider>
-
     </div>
   );
 }
