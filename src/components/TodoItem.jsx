@@ -19,7 +19,7 @@ export default function TodoItem(props){
 
     const handleDelete = () => {
         deleteTodo(props.item.id).then(() => {
-            dispatch({type: "DELETE", 
+            dispatch({type: Actions.DELETE, 
                 payload: {id: props.item.id}})
         })
     }
