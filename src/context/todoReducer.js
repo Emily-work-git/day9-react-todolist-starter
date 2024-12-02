@@ -4,6 +4,7 @@ export const Actions = {
   ADD: "ADD",
   UPDATE_DONE: "UPDATE_DONE",
   UPDATE_TEXT: "UPDATE_TEXT",
+  UPDATE: "UPDATE",
   DELETE: "DELETE",
   INIT: "INIT",
 };
@@ -14,17 +15,10 @@ export const todoReducer = (state, action) => {
       return [
         ...state, action.payload,
       ];
-    case Actions.UPDATE_DONE:
+    case Actions.UPDATE:
       return state.map((todo) => {
         if (todo.id === action.payload.id) {
-          return { ...todo, done: !todo.done };
-        }
-        return todo;
-      });
-    case Actions.UPDATE_TEXT:
-      return state.map((todo) => {
-        if (todo.id === action.payload.id) {
-          return { ...todo, text: action.payload.text };
+          return action.payload.todo;
         }
         return todo;
       });

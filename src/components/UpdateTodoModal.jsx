@@ -18,8 +18,15 @@ export default function UpdateTodoModal(props) {
   };
 
   const handleOk = () => {
-    updateTodo(props.itemId, { text: newItemText }).then(() => {
-      dispatch({ type: Actions.UPDATE_TEXT, payload: { id: props.itemId, text: newItemText } });
+    const requestBody = {
+      id: props.item.id,
+      text: newItemText,
+      done: props.item.done
+    };
+    updateTodo(props.item.id, requestBody).then(
+      (response) => {
+        console.log(response)
+      dispatch({ type: Actions.UPDATE, payload: {id: props.item.id, todo: response} });
       setIsModalOpen(false);
       setNewItemText("");
     });

@@ -10,10 +10,16 @@ export default function TodoItem(props){
     const { dispatch } = React.useContext(TodoContext);
 
     const handleClick = () => {
-        updateTodo(props.item.id, {done: !props.item.done})
-        .then(() => {
-            dispatch({type: Actions.UPDATE_DONE, 
-                payload: {id: props.item.id}})
+        const requestBody = {
+            id: props.item.id,
+            text: props.item.text,
+            done: !props.item.done
+        }
+        updateTodo(props.item.id, requestBody)
+        .then((response) => {
+            console.log(response)
+            dispatch({type: Actions.UPDATE, 
+                payload: {id: props.item.id, todo: response}})
         })
     }
 
@@ -48,7 +54,7 @@ export default function TodoItem(props){
                 {props.item.text}
             </p>
             <Button onClick={handleDelete} variant='outlined' size="small"> <DeleteOutlined /> </Button>
-            <UpdateTodoModal itemId={props.item.id}/>
+            <UpdateTodoModal item={props.item}/>
         </div>
     )
 }
