@@ -10,7 +10,6 @@ export default function TodoGroup() {
   const pageSize = 3;
 
   const handleChange = (page) => {
-    console.log("clicked")
     setCurrentPage(page);
   };
 

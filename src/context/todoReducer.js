@@ -3,6 +3,7 @@ export const InitialState = [];
 export const Actions = {
   ADD: "ADD",
   UPDATE_DONE: "UPDATE_DONE",
+  UPDATE_TEXT: "UPDATE_TEXT",
   DELETE: "DELETE",
   INIT: "INIT",
 };
