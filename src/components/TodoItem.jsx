@@ -17,7 +17,6 @@ export default function TodoItem(props){
         }
         updateTodo(props.item.id, requestBody)
         .then((response) => {
-            console.log(response)
             dispatch({type: Actions.UPDATE, 
                 payload: {id: props.item.id, todo: response}})
         })

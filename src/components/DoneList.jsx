@@ -5,7 +5,6 @@ export default function DoneList(){
     const { state } = useContext(TodoContext);
 
     const doneList = (state) => {
-        console.log(state)
         return (state.filter(todo => todo.done).map((todo) => 
          (<p key={todo.id}>{todo.text}</p>)))
     }
