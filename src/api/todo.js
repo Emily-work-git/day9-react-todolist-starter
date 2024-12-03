@@ -1,8 +1,4 @@
-import axios from 'axios';
-
-const baseURL = 'https://67495c7e868020296630aada.mockapi.io/api/v1';
-
-const instance = axios.create({baseURL});
+import instance from "./interceptor";
 
 export const getTodos = async () => {
     try{

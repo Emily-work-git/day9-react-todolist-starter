@@ -7,7 +7,7 @@ import NotFound from "./components/NotFound";
 import { Navigate } from "react-router-dom";
 import DoneList from "./components/DoneList";
 import Help from "./components/Help";
-
+import HardStop from "./components/HardStop";
 export const TodoContext = createContext();
 
 function App() {
@@ -23,11 +23,12 @@ function App() {
             <Link to="/help">Help </Link>
           </nav>
           <Routes>
-            <Route path="*" element={<NotFound />} />
             <Route path="/" element={<Navigate to="/todo-list" />} />
-            <Route path="/help" element={<Help />} />
             <Route path="/done-list" element={<DoneList />} />
             <Route path="/todo-list" element={<TodoList />} />
+            <Route path="/help" element={<Help />} />
+            <Route path="/500" element={<HardStop />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </Router>
       </TodoContext.Provider>
